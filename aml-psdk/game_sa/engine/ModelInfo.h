@@ -2,6 +2,7 @@
 #define __AML_PSDK_SAMODELINFO_H
 
 #include <aml-psdk/game_sa/plugin.h>
+#include <aml-psdk/renderware/RwMatrix.h>
 #include "../enum/WeaponType.h"
 
 struct CBox;
@@ -20,6 +21,7 @@ struct CWeaponModelInfo;
 struct CClumpModelInfo;
 struct CVehicleModelInfo;
 struct CPedModelInfo;
+struct RwFrame;
 
 enum ModelInfoType : i32
 {
