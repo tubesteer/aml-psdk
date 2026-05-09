@@ -6,6 +6,9 @@
 
 #define rpATOMIC 1
 #define rpCLUMP 2
+#define rpLIGHT 3
+#define rpWORLD 7
+#define rpGEOMETRY 8
 
 struct RwFrame;
 

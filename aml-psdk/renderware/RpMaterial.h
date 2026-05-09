@@ -7,6 +7,7 @@
 #include "RwRGBA.h"
 
 struct RxPipeline;
+struct RpMultiTexture;
 
 struct RwSurfaceProperties
 {
@@ -23,6 +24,15 @@ struct RpMaterial
     RwSurfaceProperties surfaceProps;
     RwInt16             refCount;
 };
+
+struct RpMaterialList
+{
+    RpMaterial     **materials;
+    RwInt32        numMaterials;
+    RwInt32        space;
+};
+
+typedef RpMaterial *(*RpMaterialCallBack)(RpMaterial *, void *);
 
 DECL_FASTCALL_SIMPLE_GLO(RpMaterialCreateMultiTexture, _Z28RpMaterialCreateMultiTextureP10RpMaterial12RwPlatformIDj, RpMaterial*, RpMaterial* material, RwPlatformID platformID, RwUInt32 numTextures);
 DECL_FASTCALL_SIMPLE_GLO(RpMaterialDestroyMultiTexture, _Z29RpMaterialDestroyMultiTextureP10RpMaterial12RwPlatformID, RpMaterial*, RpMaterial* material, RwPlatformID platformID);
