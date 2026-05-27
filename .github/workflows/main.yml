@@ -1,0 +1,32 @@
+name: Compile AML Plugin
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Supaya bisa klik tombol "Run" manual
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup Android NDK
+      uses: ammarahm-ed/setup-android-ndk@v1
+      with:
+        ndk-version: 'r25c' # Versi NDK yang stabil untuk arm64
+
+    - name: Compile dengan Ndk-Build
+      run: |
+        cd jni
+        ndk-build APP_ABI=arm64-v8a
+
+    - name: Upload Hasil Jadi (.so)
+      uses: actions/upload-artifact@v4
+      with:
+        name: VisualMod-64bit
+        path: libs/arm64-v8a/*.so
